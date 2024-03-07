@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JmixDataStoreSettingsManager">
+    <moduleSettings>
+      <entry key="com.company.ProjectManagement.main">
+        <ModuleSettings>
+          <option name="dataStoreOptionsV2">
+            <map>
+              <entry key="main">
+                <value>
+                  <DataStoreSettingsV2>
+                    <option name="generateDdlType" value="CREATE_AND_UPDATE" />
+                    <option name="supportedTypes">
+                      <option value="hsql" />
+                      <option value="postgres" />
+                    </option>
+                  </DataStoreSettingsV2>
+                </value>
+              </entry>
+            </map>
+          </option>
+        </ModuleSettings>
+      </entry>
+    </moduleSettings>
+  </component>
+  <component name="JmixLiquibaseChangesConfig">
+    <exclude-change idName="IDX_BUG_PROJECT" tagName="createIndex" />
+    <exclude-change idName="FK_BUG_ON_BUG_DEV_ID" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="IDX_BUG_BUG_DEV_ID" tagName="createIndex" />
+    <exclude-change idName="BUG" tagName="createTable" />
+    <exclude-change idName="FK_BUG_ON_PROJECT" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="FK_BUGS_ON_PROJECT" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="IDX_BUGS_PROJECT" tagName="createIndex" />
+    <exclude-change idName="BUGS" tagName="createTable" />
+    <exclude-change idName="IDX_BUGS_ASSIGNEE" tagName="createIndex" />
+    <exclude-change idName="FK_BUGS_ON_ASSIGNEE" tagName="addForeignKeyConstraint" />
+    <exclude-change idName="FK_TASK__ON_PARENT_TASK" tagName="addForeignKeyConstraint" />
+  </component>
+</project>

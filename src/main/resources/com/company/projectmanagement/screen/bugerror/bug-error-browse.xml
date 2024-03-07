@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:c="http://jmix.io/schema/ui/jpql-condition"
+        caption="msg://bugErrorBrowse.caption"
+        focusComponent="bugErrorsTable">
+    <data readOnly="true">
+
+        <collection id="usersDc" class="com.company.projectmanagement.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[select e from User e]]>
+                </query>
+            </loader>
+        </collection>
+        <instance id="bugErrorDc" class="com.company.projectmanagement.entity.BugError" >
+            <fetchPlan extends="_base">
+                <property name="developerAssigned" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="bugErrorDl"/>
+        </instance>
+        <collection id="bugErrorsDc" class="com.company.projectmanagement.entity.BugError">
+            <fetchPlan extends="_base"/>
+            <loader id="bugErrorsDl">
+                <query>
+                    <![CDATA[select e from BugError e]]>
+                </query>
+            </loader>
+        </collection>
+
+
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="lookupSelectAction"
+                caption="msg:///actions.Select"
+                icon="LOOKUP_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="lookupCancelAction"
+                caption="msg:///actions.Cancel"
+                icon="LOOKUP_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="bugErrorsTable" spacing="true">
+        <filter id="filter"
+                dataLoader="bugErrorsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupBox caption="msg://msg"
+                  orientation="horizontal"
+                  spacing="true"
+                  width="100%"
+                  collapsable="true"
+        >
+        <entityPicker id="developerEntityPicker"
+                      caption="msg://userEntityPicker.caption"
+                      dataContainer="bugErrorDc"
+                      property="developerAssigned"
+        >
+            <actions>
+                <action id="lookup" type="entity_lookup"></action>
+                <action id="entityOpen" type="entity_open"></action>
+                <action id="greeting" icon="MAGIC"/>
+            </actions>
+        </entityPicker>
+        </groupBox>
+        <groupTable id="bugErrorsTable"
+                    width="100%"
+                    dataContainer="bugErrorsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="title"/>
+                <column id="description"/>
+                <column id="developerAssigned" caption="msg://developerAssigned.caption"/>
+                <column id="projectName" caption="msg://projectName.caption"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="bugErrorsTable.create"/>
+                <button id="editBtn" action="bugErrorsTable.edit"/>
+                <button id="removeBtn" action="bugErrorsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://reviewScreen.caption">
+    <layout>
+        <gridLayout spacing="true">
+            <columns count="4"></columns>
+            <rows>
+                <row>
+                    <label value="Name" align="MIDDLE_LEFT"/>
+                    <textField/>
+                    <label value="Email" align="MIDDLE_LEFT"/>
+                    <textField/>
+                </row>
+                <row>
+                    <label value="Phone No." align="MIDDLE_LEFT"/>
+                    <textField/>
+                    <label value="Address" align="MIDDLE_LEFT"/>
+                    <textField/>
+                </row>
+            </rows>
+        </gridLayout>
+    </layout>
+</window>

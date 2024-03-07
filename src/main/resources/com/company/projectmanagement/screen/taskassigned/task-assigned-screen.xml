@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://taskAssignedScreen.caption">
+    <data>
+        <collection id="tasksDc" class="com.company.projectmanagement.entity.Task">
+            <fetchPlan extends="_base">
+                <property name="parentTask"/>
+            </fetchPlan>
+            <loader id="tasksDl">
+                <query>
+                   <![CDATA[select e from Task_ e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout expand="menu">
+        <split id="menu" height="100%"
+               width="100%"
+        orientation="horizontal"
+        pos="20"
+        >
+
+            <vbox
+            spacing="false">
+                <label id="myTaskLabel" value="My Tasks"/>
+
+                <button id="refreshBtn" icon="font-icon:REFRESH"></button>
+                <vbox width="AUTO" height="100%" margin="false">
+
+                <groupBox width="50%" height="500%" outerMargin="false, false, false, false">
+                    <label id="showCount"></label>
+                    <tree id="tree"
+                          captionProperty="name"
+                          dataContainer="tasksDc"
+                          height="800px"
+                          hierarchyProperty="parentTask"
+                          width="250px"
+                    >
+                    </tree>
+
+                </groupBox>
+                </vbox>
+            </vbox>
+
+            <hbox  height="100%"
+                   margin="true"
+                   spacing="false">
+             <label id="showAssignee"></label>
+
+
+</hbox>
+
+        </split>
+
+    </layout>
+</window>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://tableScreen.caption">
+    <data>
+        <collection id="usersDc" class="com.company.projectmanagement.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[select e from User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <tabSheet>
+            <tab id="tab1"
+                 caption="Users"
+                 margin="true"
+                 spacing="true"
+                 closable="true"
+            >
+
+
+        <table id="userTable"
+        dataContainer="usersDc"
+        width="100%"
+               multiselect="true"
+               reorderingAllowed="true"
+               sortable="true"
+               columnControlVisible="true"
+               showSelection="true"
+        >
+            <columns>
+                <column id="username"></column>
+                <column id="firstName"></column>
+                <column id="lastName"></column>
+                <column id="email"></column>
+            </columns>
+        </table>
+            </tab>
+           <!-- <tab id="tab2"
+                 caption="Split Screen"
+                 margin="true"
+                 spacing="true"
+                 closable="true"
+                 lazy="true">
+                <split height="300px"
+                       width="100%"
+                       orientation="horizontal"
+                       pos="50"
+                dockable="true" dockMode="LEFT">
+
+                    <hbox height="100%" width="100%">
+                        <label value="LEFT" align="MIDDLE_CENTER"/>
+
+                    </hbox>
+                    <hbox height="100%" width="100%">
+                        <label value="RIGHT" align="MIDDLE_CENTER"/>
+                    </hbox>
+
+                </split>
+            </tab>-->
+        </tabSheet>
+    </layout>
+</window>

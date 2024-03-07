@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://bugsScreen.caption">
+    <data>
+        <collection id="bugErrorsDc" class="com.company.projectmanagement.entity.BugError">
+            <fetchPlan extends="_base"/>
+            <loader id="bugErrorsDl">
+                <query>
+                    <![CDATA[select e from BugError e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <groupTable id="BugsErrorTable"
+                    dataContainer="bugErrorsDc"
+                    height="100%"
+                    width="100%">
+            <columns>
+                <group>
+                    <column id="projectName"/>
+                </group>
+                <column id="title"/>
+                <column id="description"/>
+                <column id="developerAssigned"/>
+                <column id="status"></column>
+                <column id="done" caption="Done"></column>
+            </columns>
+        </groupTable>
+    </layout>
+</window>

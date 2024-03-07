@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://twincolumnScreen.caption">
+    <data>
+        <collection id="usersDc" class="com.company.projectmanagement.entity.User">
+            <fetchPlan extends="_base"/>
+            <loader id="usersDl">
+                <query>
+                    <![CDATA[select e from User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <twinColumn id="twinColumn"
+                    addAllBtnEnabled="true"
+                    optionsContainer="usersDc"
+        />
+        <button id="showValueButton" caption="msg://showValueButton.caption" shortcut="CTRL-P" primary="true"></button>
+
+    </layout>
+</window>
